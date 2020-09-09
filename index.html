@@ -25,26 +25,48 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">View High Scores</a>
+              <a class="nav-link" href="#" id="highScoreLink">View High Scores</a>
             </li>
           </ul>
         </div>
       </nav>
 </header>
 
-<div class="card">
-    <div class="card-header">
-      
+<!--Container to hold the HTML elements-->
+<div class="container">
+
+<!-- Section used to display quiz intro and quiz -->
+  <form class="row" id="mainForm">        
+    <div id = "screenContainer" class = "d-block col-8">
+      <h1 class="codeQuiz">Code Quiz</h1>
+      <p>You will have 30 seconds to answer as many questions as you can. Each incorrect answer will subtract 4 seconds from your timer, while each correct answer will add 4 seconds. Good luck!</p>
+      <button id="startBtn" class = "btn btn-primary">Start Quiz</button>
     </div>
-    <div class="card-body">
-      <h5 class="card-title">Front End Coding Quiz</h5>
-      <p class="card-text">In this quiz, you'll answer a series of questions testing your knowledge of Front End programming, styling and markup languages. You will have a 20 second timer counting down as you answer, and each correct answer will add 2 seconds to your timer, while each wrong answer will subtract 2 seconds. Good luck!</p>
-      <a href="quiz.html" class="btn btn-primary">Start Quiz</a>
+    
+    <!-- Div used to display correct or incorrect -->
+    <div id="questionFeedBack"></div>
+    
+    <!-- Div used to show the high scores.  starts off hidden-->
+    <div id = "highScoreScreen" class = "d-none col-4">
+        <div id = "highScoreList">
+            <h1 class="highScoreH1">High Scores</h1>                
+        </div>
+        <div id = "highScoreButtons">
+            <button id="clearHighScoresBtn" class = "btn btn-primary">Clear High Scores</button>
+            <button id="returnGameBtn" class = "btn btn-primary">Return To Quiz</button>
+        </div>
     </div>
-  </div>
-  
+</form>
+
+<footer class="row">
+    <h5 class = "timer d-block" id="timerP">Timer: <span id="timerDisplay"></span></h5>
+</footer>
+
+</div>
+
     <!--Link to local javascript-->
-    <script src="script/script.js"></script>    
+    <script src="script/script.js"></script>
+    <script src="script/quiz.js"></script>    
 
     <!--Link to Bootstrap Javascript, JQuery and Popper.js plugins-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
