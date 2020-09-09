@@ -5,3 +5,12 @@
 #timerP {
     display: none;
 }
+
+#blankColumn {
+    width: 50px;
+}
+
+#questionFeedBack {
+    height: 25%;
+    margin-top: 4rem;
+}
