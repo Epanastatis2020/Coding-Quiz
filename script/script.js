@@ -9,14 +9,15 @@ var timerEl = document.getElementById("timerP");
 var timerDisplayEl = document.getElementById("timerDisplay");
 var olHolderEl = document.createElement("ol");
 var olHighScoreHolderEl = document.createElement("ol");
-var countDownTimer = 30;
+var currentResultEl = document.getElementById("questionFeedBack");
+var countDownTimer = 60;
 var questionIndex = 0;
 var quizScore = 0;
 
 viewHighScoreEl.addEventListener("click",viewHighScores);
-startBtnEl.addEventListener("click", startTheTimer);    
+startBtnEl.addEventListener("click", startTheTimer);
 olHolderEl.addEventListener("click", answerChecker);
-clearHighScoresBtnEl.addEventListener("click",clearHighScores); 
+clearHighScoresBtnEl.addEventListener("click",clearHighScores);     
 
 //Countdown timer
 function startTheTimer(event) {
@@ -36,25 +37,78 @@ function startTheTimer(event) {
 //screen and scores.
 function viewHighScores(event){
     event.preventDefault();
-    if (highScoreScreenEl.classList.contains("d-none")){
-      highScoreScreenEl.setAttribute("class","d-block");
-      viewHighScoreEl.textContent = "Hide High Scores";
-      olHighScoreHolderEl.textContent = "";
-      highScoreListEl.appendChild(olHighScoreHolderEl);
-      var highScores = JSON.parse(window.localStorage.getItem('scores'));    
-      highScores.sort(function(a, b){return b.score - a.score});
-      for (i = 0; i < highScores.length; i++) {
-        var highScoreRow = document.createElement("li");
-        highScoreRow.setAttribute("class","highScoreListItem");
-        highScoreRow.textContent = highScores[i].score + " - " + highScores[i].name;
-  //      highScoreListEl.appendChild(olHighScoreHolderEl);
-        olHighScoreHolderEl.appendChild(highScoreRow);
-      }
+    if ($( "#highScoreScreen" ).is(":hidden")){
+        $( "#highScoreScreen" ).show();
+        $( "#screenContainer" ).hide();
+        viewHighScoreEl.textContent = "Hide High Scores";
+        olHighScoreHolderEl.textContent = "";
+        highScoreListEl.appendChild(olHighScoreHolderEl);
+        var highScores = JSON.parse(window.localStorage.getItem('scores'));    
+        highScores.sort(function(a, b){return b.score - a.score});
+        for (i = 0; i < highScores.length; i++) {
+          var highScoreRow = document.createElement("li");
+          highScoreRow.setAttribute("class","highScoreListItem");
+          highScoreRow.textContent = highScores[i].score + " - " + highScores[i].name;
+    //      highScoreListEl.appendChild(olHighScoreHolderEl);
+          olHighScoreHolderEl.appendChild(highScoreRow);
+        }
     }
     else {
-      resultEl.setAttribute("class","results show");
-      screenContainerEl.setAttribute("class","show");
-      highScoreScreenEl.setAttribute("class","hide");
+        $( "#screenContainer" ).show();
+        $( "#highScoreScreen" ).hide();
       viewHighScoreEl.textContent = "View High Scores";
     }
   }
+
+  //save the high scores
+function saveHighScores(event){
+    event.preventDefault();
+      
+    var inputEl = document.getElementById("inputEl");
+    var playerName = inputEl.value.trim();
+  
+    if (playerName === "") {
+      return;
+    }
+    var currentPlayerScore = {
+      name: playerName,
+      score: quizScore
+    };
+  
+    var scores = JSON.parse(window.localStorage.getItem('scores'));
+    if (scores === null) {
+      scores = [];
+    } 
+    scores.push(currentPlayerScore);
+    localStorage.setItem("scores", JSON.stringify(scores));
+    viewHighScores(event);
+  }
+  
+  //clear the high scores
+  function clearHighScores(event) {
+    event.preventDefault();
+    localStorage.removeItem('scores')
+    olHighScoreHolderEl.textContent = "";
+  }
+  
+  //code to show the questions
+  function showQuestion(questionIndex){
+    screenContainerEl.textContent = "";
+    olHolderEl.textContent = "";
+  
+    //get the question and array of answers at the question index
+    var userQuestion = questions[questionIndex].questionTitle;
+    var possibleAnswers = questions[questionIndex].answerChoices;
+    //add the question to the start screen div
+    screenContainerEl.textContent = userQuestion;
+    screenContainerEl.appendChild(olHolderEl);
+  
+    //Add the possible answers to the screen for each question
+    possibleAnswers.forEach(function (newListItem, arrayIndex) {
+      var answerRow = document.createElement("li");
+      answerRow.setAttribute("data-index", arrayIndex)
+      answerRow.innerHTML = ' <button id="answerBtn" class="btn btn-primary">' + newListItem + '</button>';
+      olHolderEl.appendChild(answerRow);
+    })
+  }
+  

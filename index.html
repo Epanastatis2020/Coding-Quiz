@@ -37,7 +37,7 @@
 
 <!-- Section used to display quiz intro and quiz -->
   <form class="row" id="mainForm">        
-    <div id = "screenContainer" class = "d-block col-8">
+    <div id = "screenContainer">
       <h1 class="codeQuiz">Code Quiz</h1>
       <p>You will have 30 seconds to answer as many questions as you can. Each incorrect answer will subtract 4 seconds from your timer, while each correct answer will add 4 seconds. Good luck!</p>
       <button id="startBtn" class = "btn btn-primary">Start Quiz</button>
@@ -45,9 +45,10 @@
     
     <!-- Div used to display correct or incorrect -->
     <div id="questionFeedBack"></div>
-    
+
     <!-- Div used to show the high scores.  starts off hidden-->
-    <div id = "highScoreScreen" class = "d-none col-4">
+    <div id = "highScoreScreen" class = "row">
+        <hr>
         <div id = "highScoreList">
             <h1 class="highScoreH1">High Scores</h1>                
         </div>
@@ -58,7 +59,7 @@
 <hr>
 
 <footer class="row">
-    <h5 class = "timer d-block" id="timerP">Timer: <span id="timerDisplay"></span></h5>
+    <h5 class = "timer" id="timerP">Timer: <span id="timerDisplay"></span></h5>
 </footer>
 
 </div>
