@@ -1,6 +1,8 @@
+// Declaring global variables
 var mainForm = document.getElementById("mainForm");
 var screenContainerEl = document.getElementById("screenContainer");
 var viewHighScoreEl = document.getElementById("highScoreLink");
+var btnHome = document.getElementById("homeBtn");
 var highScoreScreenEl = document.getElementById("highScoreScreen");
 var highScoreListEl = document.getElementById("highScoreList");
 var startBtnEl = document.getElementById("startBtn");
@@ -16,10 +18,17 @@ var questionIndex = 0;
 var quizScore = 0;
 var totalScore = 0;
 
+//Adding event listeners
 viewHighScoreEl.addEventListener("click",viewHighScores);
 startBtnEl.addEventListener("click", startTheTimer);
 olHolderEl.addEventListener("click", answerChecker);
-clearHighScoresBtnEl.addEventListener("click",clearHighScores);     
+clearHighScoresBtnEl.addEventListener("click",clearHighScores);
+
+//Making home button reload page
+btnHome.addEventListener("click", event => {
+    location.reload();
+});     
+
 
 //Countdown timer
 function startTheTimer(event) {
@@ -192,6 +201,7 @@ function saveHighScores(event){
     var nameInputEl = document.createElement("input");
     nameInputEl.setAttribute("type", "text");
     nameInputEl.setAttribute("id", "inputEl");
+    nameInputEl.setAttribute("class", "input-group-prepend");
     nameInputEl.textContent = "";
     screenContainerEl.appendChild(nameInputEl);
   
