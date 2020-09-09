@@ -112,3 +112,37 @@ function saveHighScores(event){
     })
   }
   
+  //code that checks answers and processes
+  function answerChecker(event){
+      debugger;
+    var choice = event.target;
+  
+    //event delegate - if user has clicked on a button, process answer
+    if (choice.matches("button")) {
+  
+      //answer is correct.  bump the score up by one, return a correct message
+      if (choice.parentElement.getAttribute("data-index") == questions[questionIndex].correctAnswer){
+        quizScore++;
+      }
+      //answer is incorrect - deduct 10 seconds from teh timer, display incorrect message.
+      else {
+        countDownTimer = countDownTimer - 10;
+        if (countDownTimer < 0) {
+          countDownTimer = 0;
+        }
+      }
+  
+      questionIndex++;
+  
+      if (questionIndex == questions.length){
+        //call ending function here        
+        finishGame();
+      }
+      else
+      {
+        //or, if havent reached the end of questions, ask the next one
+        showQuestion(questionIndex);      
+      }
+    }
+  }
+  
