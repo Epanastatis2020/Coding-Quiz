@@ -146,3 +146,44 @@ function saveHighScores(event){
     }
   }
   
+  //finish the game
+  function finishGame(){
+    screenContainerEl.textContent = "";
+    timerEl.style.display = "none";
+  
+    //new h1
+    var endGameH1El = document.createElement("h1");
+    endGameH1El.setAttribute("id", "endGameH1El");
+    endGameH1El.textContent = "Game over man!"
+    screenContainerEl.appendChild(endGameH1El);
+  
+    //p tag that shows your final score 
+    var endGamePEl = document.createElement("p");
+    endGamePEl.setAttribute("id", "endGameP");
+    endGamePEl.textContent = "Your final score is: " + quizScore;
+    screenContainerEl.appendChild(endGamePEl);
+    
+    //label for the name input
+    var newLabelEl = document.createElement("label");
+    newLabelEl.setAttribute("id", "inputLabelEl");
+    newLabelEl.setAttribute("for", "inputEl");
+    newLabelEl.textContent = "Enter your name or initials: ";
+    screenContainerEl.appendChild(newLabelEl);
+  
+    //Input element to enter name
+    var nameInputEl = document.createElement("input");
+    nameInputEl.setAttribute("type", "text");
+    nameInputEl.setAttribute("id", "inputEl");
+    nameInputEl.textContent = "";
+    screenContainerEl.appendChild(nameInputEl);
+  
+    //Submit button, which will record high scores.
+    var highScoreSaveBtnEl = document.createElement("button");
+    highScoreSaveBtnEl.setAttribute("id", "startBtn");
+    highScoreSaveBtnEl.setAttribute("class", "btn btn-primary");
+    highScoreSaveBtnEl.textContent = "Save";
+    
+    highScoreSaveBtnEl.addEventListener("click",saveHighScores);
+    screenContainerEl.appendChild(highScoreSaveBtnEl);
+    screenContainerEl.appendChild(returnToQuizBtnEl);
+  }
