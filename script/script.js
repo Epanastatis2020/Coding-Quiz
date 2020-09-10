@@ -141,7 +141,7 @@ function saveHighScores(event){
         currentResultEl.textContent = "Correct!";
         currentResultEl.setAttribute("class", "float-right alert alert-success");
       }
-      //answer is incorrect - deduct 5 seconds from teh timer, display incorrect message.
+      //answer is incorrect - deduct 5 seconds from the timer, display incorrect message.
       else {
         countDownTimer = countDownTimer - 4;
         if (countDownTimer < 0) {
