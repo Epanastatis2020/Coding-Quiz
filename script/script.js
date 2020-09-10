@@ -74,7 +74,6 @@ function viewHighScores(event){
 
   //save the high scores
 function saveHighScores(event){
-    debugger;
     event.preventDefault();
       
     var inputEl = document.getElementById("inputEl");
