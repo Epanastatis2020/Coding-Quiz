@@ -4,7 +4,7 @@ This is a webpage made in Html, CSS and Javascript. The coding quiz application 
 ​
 ## Contents
 <p>
-The app is composed of 1 page, index.html. It includes two javascript files, sciprt.js, which provides the functionality for the quiz and a quiz.js, which provides the array containing the quiz questions and answers. Page styling is a mixed solution using Bootstrap and a CSS styles sheet, style.css.
+The app is composed of 1 page, index.html. It includes a javascript file sciprt.js, which provides the functionality for the quiz and the array containing the quiz questions and answers. Page styling is a mixed solution using Bootstrap and a CSS styles sheet, style.css.
 </p>
 
 ## Objective
@@ -26,7 +26,7 @@ I used Bootstrap to style the app as this gave me a passable aesthetic while not
 
 I also intended on using some FontAwesome icons, but was not able to incorporate these satisfactorily so I left them out.
 
-## screenshots
+## Screenshots
 
 ![Quiz Home Page](https://i.imgur.com/W6Ss8pi.jpg)
 
@@ -44,7 +44,10 @@ No licence was required for this project.
 <a href="https://epanastatis2020.github.io/Coding-Quiz/">Please visit the site on GitHub Pages</a>
 
 ## Acknowledgements
-My mentor John Servinis was instrumental in helping me resolve some bugs, especially around jQuery functions which weren't firing properly. Thanks John!
+
+My mentor John S was instrumental in helping me resolve some bugs, especially around jQuery functions which weren't firing properly. Thanks John!
+
+James D helped me work out some of the local storage and timer functionality. Thanks James! 
 
 ## Authors
 ​
